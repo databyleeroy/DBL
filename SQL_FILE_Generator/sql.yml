@@ -1,0 +1,21 @@
+version: '1.0'
+stages:
+  - "Clone repository"
+  - "Test"
+
+steps:
+  main_clone:
+    title: "Cloning main repository"
+    type: "git-clone"
+    repo: "https://github.com/databyleeroy/DBL"  # Replace with your GitHub repository URL
+    revision: "master"
+    stage: "Clone repository"
+
+  test:
+    title: "Running tests"
+    stage: "Test"
+    image: "python:3.8"
+    working_directory: "/Users/leeroy/DBL/SQL_FILE_Generator/tests"  # Set the working directory to the project directory
+    commands:
+      - "pip install -r requirements.txt"
+      - "python -m unittest discover tests"
